@@ -1,0 +1,40 @@
+{
+  "name": "fatami-ali-pharmaceuticals",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Corporate website for Fatami Ali Pharmaceuticals — pharmaceuticals, medical equipment and healthcare solutions, Kabul, Afghanistan.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && node scripts/rebase-assets.mjs && node scripts/postbuild.mjs",
+    "preview": "vite preview",
+    "build:standalone": "cross-env STANDALONE=1 VITE_HASH_ROUTER=1 vite build && node scripts/standalone.mjs",
+    "build:pages": "cross-env VITE_HASH_ROUTER=1 vite build && node scripts/rebase-assets.mjs && node scripts/postbuild.mjs",
+    "serve:pages": "node scripts/serve-pages.mjs",
+    "typecheck": "tsc --noEmit",
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "verify": "node scripts/verify.mjs",
+    "shoot": "node scripts/shoot.mjs",
+    "tone": "node scripts/tone-check.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.453.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.5.4",
+    "cross-env": "^7.0.3",
+    "playwright-core": "^1.48.0",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21"
+  }
+}

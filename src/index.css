@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================================== *
+ * THEME
+ *
+ * Both themes are built from the logo's own teal (hue 168–180) and the
+ * navy-teal that sits one step round from it. Nothing here is outside that
+ * family.
+ *
+ * LIGHT is clinical: white paper, a faint teal-tinted mist, and text set
+ * DARK — headings at 14.9:1, body at 10.7:1, captions at 7.9:1 against
+ * white. No grey-on-white anywhere.
+ *
+ * DARK is instrument-panel: a deep navy-teal ground, cards a step lighter,
+ * and the logo turquoise as the live signal.
+ * ==================================================================== */
+
+@layer base {
+  :root {
+    --nav-h: 78px;
+    color-scheme: light;
+
+    --bg: 255 255 255; /* white */
+    --bg-subtle: 244 249 248; /* #F4F9F8 — the teal-tinted neutral */
+    --bg-inset: 232 243 241;
+
+    --surface: 255 255 255;
+    --surface-2: 246 251 250;
+    --surface-3: 236 246 244;
+
+    /* Text is dark. This is the single most important rule in the file. */
+    --fg: 9 43 53; /* ink-900  — 14.9:1 on white */
+    --fg-muted: 36 66 77; /* ink-700  — 10.7:1 on white */
+    --fg-subtle: 52 85 96; /* ink-600  —  7.9:1 on white */
+
+    --line: 205 227 224;
+    --line-strong: 175 209 204;
+
+    --action: 0 111 104; /* teal-800 — 6.0:1 with white text */
+    --action-hover: 10 84 79; /* teal-900 — 8.6:1 */
+    --on-action: 255 255 255;
+
+    --accent: 0 111 104; /* teal-800 — the deep teal, readable as text */
+    --accent-soft: 213 243 239; /* teal-100 */
+
+    --danger: 165 32 32;
+    --danger-soft: 254 242 242;
+
+    --shadow: 9 43 53;
+
+    /* Glass: white frost with a teal edge. Kept dense — the navbar sits over
+       the deep teal hero at rest, and a thin white veil over that ground goes
+       grey-green rather than reading as frosted white. */
+    --glass-bg: 255 255 255;
+    --glass-alpha: 0.9;
+    --glass-line: 166 231 221; /* teal-200 */
+    --glass-line-alpha: 0.7;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --bg: 6 30 37; /* ink-950 */
+    --bg-subtle: 9 43 53; /* ink-900 */
+    --bg-inset: 12 51 62;
+
+    --surface: 21 49 59; /* ink-800 */
+    --surface-2: 27 61 72;
+    --surface-3: 36 66 77; /* ink-700 */
+
+    --fg: 232 244 243; /* soft white with a teal cast */
+    --fg-muted: 178 203 206; /* 10.2:1 on the ground */
+    --fg-subtle: 143 170 174; /*  7.0:1 */
+
+    --line: 45 79 89;
+    --line-strong: 66 105 116;
+
+    --action: 60 180 156; /* teal-400 — 6.7:1 with ink-950 text */
+    --action-hover: 110 214 197; /* teal-300 */
+    --on-action: 6 30 37; /* ink-950 — dark text on a bright button */
+
+    --accent: 110 214 197; /* teal-300 — 10.0:1 on the ground */
+    --accent-soft: 10 84 79; /* teal-900 */
+
+    --danger: 248 160 160;
+    --danger-soft: 61 24 24;
+
+    --shadow: 0 0 0;
+
+    /* Glass: deep teal pane with a turquoise edge. */
+    --glass-bg: 9 43 53;
+    --glass-alpha: 0.72;
+    --glass-line: 110 214 197; /* teal-300 */
+    --glass-line-alpha: 0.2;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + 24px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-body text-fg-muted antialiased;
+    overflow-x: hidden;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+    /* Theme swaps fade rather than snap. Scoped to the two properties that
+       actually change on <body> so nothing else inherits a transition. */
+    transition: background-color 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      color 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display text-fg;
+    text-wrap: balance;
+  }
+
+  strong, b {
+    @apply font-semibold text-fg;
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-fg;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* On the deep teal panels the ink outline disappears; use the turquoise. */
+  .on-dark :focus-visible {
+    outline-color: #6ed6c5;
+  }
+
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--bg-subtle)); }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--line-strong));
+    border-radius: 999px;
+    border: 3px solid rgb(var(--bg-subtle));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--accent)); }
+}
+
+@layer components {
+  /* ---------------------------------------------------------- labels */
+
+  .label {
+    @apply font-sans text-label uppercase text-accent;
+  }
+
+  .label-quiet {
+    @apply font-sans text-label uppercase text-fg-subtle;
+  }
+
+  /* ------------------------------------------------------- body copy */
+
+  .lead {
+    @apply max-w-measure text-lead text-fg-muted;
+  }
+
+  .prose-body p + p {
+    @apply mt-5;
+  }
+
+  /* ------------------------------------------------------------ rules */
+
+  .rule-accent {
+    @apply block h-1 w-12 rounded-full bg-teal-500;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-400 ease-out;
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    @apply origin-left scale-x-100;
+  }
+
+  .nums { font-variant-numeric: tabular-nums; }
+
+  /* ----------------------------------------------------------- glass
+   *
+   * Used sparingly: the navbar, the hero credential card, the contact
+   * card. Everything else is opaque. A glass panel needs something worth
+   * seeing through it, or it is just a tinted box — and it is never so
+   * transparent that the text on it stops being readable.
+   */
+  .glass {
+    background-color: rgb(var(--glass-bg) / var(--glass-alpha));
+    border: 1px solid rgb(var(--glass-line) / var(--glass-line-alpha));
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  /** Glass over a photograph or a deep teal panel — always the dark pane. */
+  .glass-dark {
+    background-color: rgb(6 30 37 / 0.78);
+    border: 1px solid rgb(110 214 197 / 0.22);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+  }
+
+  @supports not (backdrop-filter: blur(4px)) {
+    .glass { background-color: rgb(var(--glass-bg) / 0.97); }
+    .glass-dark { background-color: rgb(6 30 37 / 0.93); }
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /** A soft wash in the logo's own two tones — deep teal and turquoise. */
+  .wash-brand {
+    background-image:
+      radial-gradient(58% 52% at 88% 8%, rgb(32 184 168 / 0.14), transparent 70%),
+      radial-gradient(46% 44% at 4% 90%, rgb(0 111 104 / 0.10), transparent 68%);
+  }
+
+  .wash-mist {
+    background-image: linear-gradient(180deg, rgb(var(--bg-subtle)) 0%, rgb(var(--bg)) 100%);
+  }
+
+  /** The precision grid — a faint 44px rule, the site's quiet texture. */
+  .grid-fine {
+    background-image:
+      linear-gradient(to right, rgb(var(--line) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--line) / 0.6) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  /** The same grid on the fixed deep-teal panels, which are dark in both themes. */
+  .grid-fine-dark {
+    background-image:
+      linear-gradient(to right, rgb(110 214 197 / 0.10) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(110 214 197 / 0.10) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /** Photographs sit on a deep ground; this stops them glaring in dark mode. */
+  .dark .photo-dim { filter: brightness(0.86) contrast(1.04) saturate(0.94); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

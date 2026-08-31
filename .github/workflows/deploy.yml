@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Lets the site be redeployed from the Actions tab without a new commit.
+  workflow_dispatch:
+
+# Pages needs to read the checkout and mint an id-token to claim the deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build
+        # A project page is served from /<repo>/, not the domain root, so the
+        # base path has to be baked in. `build:pages` also routes on the hash,
+        # because Pages cannot rewrite a deep link to the SPA shell — it can
+        # only serve 404.html, and does so with a real 404 status.
+        run: npm run build:pages
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

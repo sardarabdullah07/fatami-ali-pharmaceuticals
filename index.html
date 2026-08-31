@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" type="image/png" href="/assets/brand/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/brand/favicon.png" />
+    <meta name="theme-color" content="#FFFFFF" />
+
+    <title>Fatami Ali Pharmaceuticals — Advancing Healthcare. Building Trust. Transforming Lives.</title>
+    <meta
+      name="description"
+      content="Fatami Ali Pharmaceuticals is an Afghan healthcare company importing, marketing and distributing pharmaceuticals, medical equipment and specialised clinical solutions. Exclusive distributor for Beximco, Godman, Novatek and Yug Pharmaceuticals."
+    />
+    <link rel="canonical" href="https://fatamialipharma.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fatami Ali Pharmaceuticals" />
+    <meta property="og:title" content="Fatami Ali Pharmaceuticals — Advancing Healthcare. Building Trust. Transforming Lives." />
+    <meta
+      property="og:description"
+      content="Connecting global healthcare excellence with Afghanistan. Pharmaceuticals, medical equipment, interventional cardiology, angiography, endoscopy and hospital solutions."
+    />
+    <meta property="og:image" content="/assets/brand/logo-lockup.png" />
+    <meta property="og:locale" content="en" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fatami Ali Pharmaceuticals" />
+    <meta
+      name="twitter:description"
+      content="Your trusted partner in pharmaceuticals, medical technologies and healthcare solutions in Afghanistan."
+    />
+    <meta name="twitter:image" content="/assets/brand/logo-lockup.png" />
+
+    <!--
+      Resolve the theme before first paint. Without this the page renders in
+      light, then swaps once React mounts — on a dark-mode device that flash is
+      the first thing a visitor sees. Kept in sync with `src/hooks/useTheme`.
+    -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('fap-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          var root = document.documentElement
+          if (theme === 'dark') root.classList.add('dark')
+          root.style.colorScheme = theme
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', theme === 'dark' ? '#061E25' : '#FFFFFF')
+        } catch (e) {}
+      })()
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Fatami Ali Pharmaceuticals",
+        "alternateName": "Fatima Ali Trading Company",
+        "url": "https://fatamialipharma.com/",
+        "logo": "https://fatamialipharma.com/assets/brand/logo-lockup.png",
+        "slogan": "Advancing Healthcare. Building Trust. Transforming Lives.",
+        "foundingDate": "2015",
+        "description": "Privately owned Afghan healthcare company specialising in the importation, marketing, distribution and commercialisation of pharmaceutical products, advanced medical equipment and specialised healthcare solutions.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Khair Khana, Parwan Hotel, Rahman Center, Third Floor, Office No# F2/08",
+          "addressLocality": "Kabul",
+          "addressCountry": "AF"
+        },
+        "areaServed": { "@type": "Country", "name": "Afghanistan" },
+        "email": "Fatima.ali011@outlook.com",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "telephone": "+93711855335",
+            "email": "Fatima.ali011@outlook.com",
+            "availableLanguage": ["en", "ps", "fa"]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+93798323380",
+            "email": "Zaland1114@gmail.com",
+            "availableLanguage": ["en", "ps", "fa"]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
