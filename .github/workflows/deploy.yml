@@ -28,13 +28,12 @@ jobs:
           node-version: 22
           cache: npm
 
-      # `npm install`, not `npm ci`. Rollup ships its native binary as a
-      # per-platform optional dependency, and a lockfile written on Windows
-      # only records the Windows one — `npm ci` installs the lockfile exactly
-      # as written and then fails on Linux looking for
-      # @rollup/rollup-linux-x64-gnu. `npm install` resolves the right binary
-      # for the runner while still honouring the locked versions.
-      - run: npm install --no-audit --no-fund
+      # Rollup ships its native binary as a per-platform optional dependency,
+      # and a lockfile written on Windows records only the Windows one. The
+      # Linux binary is therefore declared outright in package.json's
+      # optionalDependencies, so it is in the lockfile and this stays a strict,
+      # reproducible install rather than a re-resolve.
+      - run: npm ci --no-audit --no-fund
 
       - name: Type check
         run: npm run typecheck
