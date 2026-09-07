@@ -50,7 +50,7 @@ const divisions: Division[] = [
     title: 'Medical Equipment Division',
     subtitle: 'Advancing modern healthcare through innovative medical technologies',
     body: [
-      'Recognising that advanced medical technologies have become essential to improving clinical outcomes, Fatami Ali Pharmaceuticals expanded beyond pharmaceutical distribution to become a supplier of sophisticated medical equipment, hospital technologies and specialised clinical consumables.',
+      'Recognising that advanced medical technologies have become essential to improving clinical outcomes, Fatima Ali Pharmaceuticals expanded beyond pharmaceutical distribution to become a supplier of sophisticated medical equipment, hospital technologies and specialised clinical consumables.',
       'Rather than simply supplying equipment, we work alongside healthcare providers to identify solutions that meet their clinical objectives, operational requirements and long-term development plans. Our commitment extends from procurement and logistics through to technical coordination and ongoing customer support.',
     ],
     portfolioKey: 'medical-equipment',

@@ -34,9 +34,9 @@ const contents = [
 
 export default function About() {
   usePageMeta({
-    title: 'About & Products — Fatami Ali Pharmaceuticals',
+    title: 'About & Products — Fatima Ali Pharmaceuticals',
     description:
-      'The complete company profile of Fatami Ali Pharmaceuticals: our journey since 2015, vision and values, therapeutic portfolio across twelve areas, international partners, and our pharmaceutical, medical equipment, cath lab, angiography, endoscopy and hospital solutions divisions.',
+      'The complete company profile of Fatima Ali Pharmaceuticals: our journey since 2015, vision and values, therapeutic portfolio across twelve areas, international partners, and our pharmaceutical, medical equipment, cath lab, angiography, endoscopy and hospital solutions divisions.',
     path: '/about',
   })
 
@@ -46,7 +46,7 @@ export default function About() {
         breadcrumb="About & Products"
         label="Company profile"
         title="More than a decade at the intersection of global healthcare innovation and Afghanistan"
-        intro="Fatami Ali Pharmaceuticals is a privately owned Afghan healthcare company. This is the full profile: how we started, what we stand for, what we carry, and who we carry it for."
+        intro="Fatima Ali Pharmaceuticals is a privately owned Afghan healthcare company. This is the full profile: how we started, what we stand for, what we carry, and who we carry it for."
       >
         <nav aria-label="On this page" className="mt-10">
           <ul className="flex flex-wrap gap-2">

@@ -13,7 +13,7 @@ const elsewhere = [
 
 export default function NotFound() {
   usePageMeta({
-    title: 'Page not found — Fatami Ali Pharmaceuticals',
+    title: 'Page not found — Fatima Ali Pharmaceuticals',
     description: 'The page you were looking for is not here. Find our products, divisions and contact details instead.',
     path: '/404',
   })

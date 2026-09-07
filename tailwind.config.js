@@ -1,5 +1,5 @@
 /**
- * Design tokens for Fatami Ali Pharmaceuticals.
+ * Design tokens for Fatima Ali Pharmaceuticals.
  *
  * The palette is sampled from the company's own caduceus mark: a deep teal,
  * the turquoise that lights it, and the navy-teal it sits on. Nothing here is

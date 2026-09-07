@@ -33,7 +33,7 @@ export function WhoWeAre({
                 src="/assets/gallery/distribution-floor.webp"
                 srcSet="/assets/gallery/distribution-floor-800.webp 800w, /assets/gallery/distribution-floor.webp 1280w"
                 sizes="(min-width: 1024px) 44vw, 92vw"
-                alt="The Fatami Ali Pharmaceuticals distribution floor in Kabul, with staff at the counter and floor-to-ceiling shelving stocked with pharmaceutical cartons"
+                alt="The Fatima Ali Pharmaceuticals distribution floor in Kabul, with staff at the counter and floor-to-ceiling shelving stocked with pharmaceutical cartons"
                 width={1280}
                 height={720}
                 loading="lazy"

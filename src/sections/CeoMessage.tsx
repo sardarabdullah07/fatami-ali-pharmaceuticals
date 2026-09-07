@@ -31,7 +31,7 @@ export function CeoMessage() {
                   src="/assets/gallery/storefront.webp"
                   srcSet="/assets/gallery/storefront-800.webp 800w, /assets/gallery/storefront.webp 1280w"
                   sizes="(min-width: 1024px) 36vw, 92vw"
-                  alt="The exterior of the Fatami Ali Pharmaceuticals premises in Kabul, carrying Beximco Pharma and Yug Enterprises branding on the glazing"
+                  alt="The exterior of the Fatima Ali Pharmaceuticals premises in Kabul, carrying Beximco Pharma and Yug Enterprises branding on the glazing"
                   width={1280}
                   height={720}
                   loading="lazy"

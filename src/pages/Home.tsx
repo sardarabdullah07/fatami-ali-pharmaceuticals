@@ -16,9 +16,9 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 
 export default function Home() {
   usePageMeta({
-    title: 'Fatami Ali Pharmaceuticals — Pharmaceuticals & Medical Technology, Afghanistan',
+    title: 'Fatima Ali Pharmaceuticals — Pharmaceuticals & Medical Technology, Afghanistan',
     description:
-      'Fatami Ali Pharmaceuticals imports, markets and distributes pharmaceuticals, advanced medical equipment and specialised healthcare solutions across Afghanistan. Exclusive Afghan distributor for Beximco, Godman, Novatek and Yug Pharmaceuticals.',
+      'Fatima Ali Pharmaceuticals imports, markets and distributes pharmaceuticals, advanced medical equipment and specialised healthcare solutions across Afghanistan. Exclusive Afghan distributor for Beximco, Godman, Novatek and Yug Pharmaceuticals.',
     path: '/',
   })
 

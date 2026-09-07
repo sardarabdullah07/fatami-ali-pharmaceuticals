@@ -28,7 +28,7 @@ export function Logo({ onDark = false, className }: { onDark?: boolean; classNam
             onDark ? 'text-white' : 'text-fg',
           )}
         >
-          Fatami Ali
+          Fatima Ali
         </span>
         <span
           className={cn(

@@ -16,7 +16,7 @@ export function Partners() {
         <SectionHead
           label="International partners"
           title="Exclusive distribution agreements"
-          intro="Fatami Ali Pharmaceuticals is honoured to represent internationally respected pharmaceutical manufacturers through exclusive distribution partnerships within Afghanistan."
+          intro="Fatima Ali Pharmaceuticals is honoured to represent internationally respected pharmaceutical manufacturers through exclusive distribution partnerships within Afghanistan."
         />
 
         <StaggerGroup as="ul" className="mt-14 grid gap-6 sm:grid-cols-2">

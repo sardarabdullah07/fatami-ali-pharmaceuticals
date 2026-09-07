@@ -63,7 +63,7 @@ export function Hero() {
 
           <motion.h1 {...rise(0.1)} id="hero-title" className="mt-6">
             <span className="block font-display text-display-2xl text-white">
-              Fatami Ali
+              Fatima Ali
               <br />
               Pharmaceuticals
             </span>

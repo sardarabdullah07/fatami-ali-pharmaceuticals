@@ -31,9 +31,9 @@ const routes = [
 
 export default function Contact() {
   usePageMeta({
-    title: 'Contact — Fatami Ali Pharmaceuticals, Kabul',
+    title: 'Contact — Fatima Ali Pharmaceuticals, Kabul',
     description:
-      'Contact Fatami Ali Pharmaceuticals in Kabul, Afghanistan. Pharmaceutical partnership, medical equipment, healthcare solutions and distribution enquiries from manufacturers, hospitals and healthcare institutions.',
+      'Contact Fatima Ali Pharmaceuticals in Kabul, Afghanistan. Pharmaceutical partnership, medical equipment, healthcare solutions and distribution enquiries from manufacturers, hospitals and healthcare institutions.',
     path: '/contact',
   })
 
@@ -70,7 +70,7 @@ export default function Contact() {
                       src="/assets/gallery/storefront-entrance.webp"
                       srcSet="/assets/gallery/storefront-entrance-800.webp 800w, /assets/gallery/storefront-entrance.webp 1280w"
                       sizes="(min-width: 1024px) 34vw, 92vw"
-                      alt="The entrance to the Fatami Ali Pharmaceuticals premises at the Rahman Center, Khair Khana, Kabul"
+                      alt="The entrance to the Fatima Ali Pharmaceuticals premises at the Rahman Center, Khair Khana, Kabul"
                       width={1280}
                       height={720}
                       loading="lazy"
@@ -201,7 +201,7 @@ export default function Contact() {
                 src="/assets/gallery/warehouse-interior.webp"
                 srcSet="/assets/gallery/warehouse-interior-800.webp 800w, /assets/gallery/warehouse-interior.webp 1280w"
                 sizes="92vw"
-                alt="The interior of the Fatami Ali Pharmaceuticals premises in Kabul, with staff at the counter and shelving stocked to the ceiling"
+                alt="The interior of the Fatima Ali Pharmaceuticals premises in Kabul, with staff at the counter and shelving stocked to the ceiling"
                 width={1280}
                 height={720}
                 loading="lazy"

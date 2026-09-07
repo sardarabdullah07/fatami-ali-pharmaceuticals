@@ -18,7 +18,7 @@ export const ceoMessage = {
   /** The line the whole letter turns on. */
   pullQuote: 'Quality healthcare should never be limited by geography.',
   paragraphs: [
-    'It is with great pride and gratitude that I welcome you to Fatami Ali Pharmaceuticals. More than ten years ago, we embarked on a journey with a simple yet ambitious vision: to become a trusted bridge between the world’s leading healthcare innovators and the people of Afghanistan.',
+    'It is with great pride and gratitude that I welcome you to Fatima Ali Pharmaceuticals. More than ten years ago, we embarked on a journey with a simple yet ambitious vision: to become a trusted bridge between the world’s leading healthcare innovators and the people of Afghanistan.',
     'What began as a modest pharmaceutical distribution business has evolved into a comprehensive healthcare solutions company, serving hospitals, clinics, pharmacies, healthcare professionals, government institutions, humanitarian organisations and international partners across the country.',
     'Every patient deserves access to safe medicines, advanced medical technologies and dependable healthcare services. Every physician deserves reliable products that support better clinical outcomes. Every international manufacturer deserves a professional partner capable of protecting their reputation while expanding their presence in Afghanistan.',
     'Today we proudly represent internationally respected pharmaceutical manufacturers while supplying healthcare institutions with advanced medical equipment, interventional cardiology solutions, angiography and angioplasty products, endoscopy systems and consumables, hospital equipment, laboratory technologies and specialised clinical products.',
@@ -26,7 +26,7 @@ export const ceoMessage = {
   ],
   signOff: 'With sincere appreciation,',
   signature: 'Chief Executive Officer',
-  signatureOrg: 'Fatami Ali Pharmaceuticals',
+  signatureOrg: 'Fatima Ali Pharmaceuticals',
 } as const
 
 /* ------------------------------------------------------------------ *
@@ -35,7 +35,7 @@ export const ceoMessage = {
 
 export const whoWeAre = {
   lead:
-    'Fatami Ali Pharmaceuticals is a privately owned Afghan healthcare company specialising in the importation, marketing, distribution and commercialisation of pharmaceutical products, advanced medical equipment and specialised healthcare solutions.',
+    'Fatima Ali Pharmaceuticals is a privately owned Afghan healthcare company specialising in the importation, marketing, distribution and commercialisation of pharmaceutical products, advanced medical equipment and specialised healthcare solutions.',
   paragraphs: [
     'For more than ten years we have worked at the forefront of Afghanistan’s healthcare sector, building partnerships with internationally recognised pharmaceutical manufacturers and medical technology companies. Through these partnerships we provide healthcare institutions across the country with reliable medicines, innovative clinical technologies and high-quality medical consumables.',
     'Beyond pharmaceuticals, we have developed extensive expertise in the supply of sophisticated medical technologies — angiography systems, angioplasty devices, interventional cardiology products, endoscopy equipment and consumables, hospital equipment, laboratory technologies, intensive care solutions and surgical instruments.',
@@ -55,7 +55,7 @@ export const promise =
 export const journeyIntro = {
   heading: 'A decade of growth, partnership and commitment',
   paragraphs: [
-    'More than ten years ago, Fatami Ali Pharmaceuticals was established with a clear purpose — to bridge the gap between internationally recognised healthcare manufacturers and the growing needs of Afghanistan’s healthcare sector.',
+    'More than ten years ago, Fatima Ali Pharmaceuticals was established with a clear purpose — to bridge the gap between internationally recognised healthcare manufacturers and the growing needs of Afghanistan’s healthcare sector.',
     'Our journey began with pharmaceutical importation and distribution. Understanding that modern healthcare requires much more than pharmaceuticals alone, we strategically expanded into advanced medical technologies and hospital solutions.',
     'Our journey has never been measured simply by business growth. It has been measured by the relationships we have built, the trust we have earned, and the contribution we continue to make to Afghanistan’s healthcare sector.',
   ],
@@ -159,7 +159,7 @@ export const gallery: readonly GalleryItem[] = [
     id: 'storefront',
     src: '/assets/gallery/storefront.webp',
     thumb: '/assets/gallery/storefront-800.webp',
-    alt: 'The exterior of the Fatami Ali Pharmaceuticals premises in Kabul, with Beximco Pharma and Yug Enterprises branding on the glazing',
+    alt: 'The exterior of the Fatima Ali Pharmaceuticals premises in Kabul, with Beximco Pharma and Yug Enterprises branding on the glazing',
     caption: 'Premises frontage, Rahman Center',
     group: 'Premises',
   },
@@ -209,7 +209,7 @@ export const gallery: readonly GalleryItem[] = [
     id: 'storefront-entrance',
     src: '/assets/gallery/storefront-entrance.webp',
     thumb: '/assets/gallery/storefront-entrance-800.webp',
-    alt: 'The entrance to the Fatami Ali Pharmaceuticals distribution premises, with partner branding and company contact details displayed',
+    alt: 'The entrance to the Fatima Ali Pharmaceuticals distribution premises, with partner branding and company contact details displayed',
     caption: 'Entrance and partner branding',
     group: 'Premises',
   },

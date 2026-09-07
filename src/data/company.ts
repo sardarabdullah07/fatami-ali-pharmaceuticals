@@ -6,7 +6,7 @@
  */
 
 export const company = {
-  name: 'Fatami Ali Pharmaceuticals',
+  name: 'Fatima Ali Pharmaceuticals',
   legalName: 'Fatima Ali Trading Company',
   tagline: 'Advancing Healthcare. Building Trust. Transforming Lives.',
   positioning: 'Connecting Global Healthcare Excellence with Afghanistan',
@@ -96,7 +96,7 @@ export const solutions: readonly Solution[] = [
     ],
     image: '/assets/products/zerolip-20-cut.webp',
     imageAlt:
-      'Zerolip 20, atorvastatin 20 mg tablets from the Fatami Ali Pharmaceuticals cardiovascular portfolio',
+      'Zerolip 20, atorvastatin 20 mg tablets from the Fatima Ali Pharmaceuticals cardiovascular portfolio',
   },
   {
     id: 'medical-equipment',
@@ -517,7 +517,7 @@ export const milestones = [
   {
     year: '2015',
     title: 'Foundation',
-    body: 'Fatami Ali Pharmaceuticals is founded with a vision to improve access to quality healthcare products in Afghanistan.',
+    body: 'Fatima Ali Pharmaceuticals is founded with a vision to improve access to quality healthcare products in Afghanistan.',
   },
   {
     year: '2016–2017',

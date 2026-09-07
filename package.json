@@ -1,9 +1,9 @@
 {
-  "name": "fatami-ali-pharmaceuticals",
+  "name": "fatima-ali-pharmaceuticals",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Corporate website for Fatami Ali Pharmaceuticals — pharmaceuticals, medical equipment and healthcare solutions, Kabul, Afghanistan.",
+  "description": "Corporate website for Fatima Ali Pharmaceuticals — pharmaceuticals, medical equipment and healthcare solutions, Kabul, Afghanistan.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build && node scripts/rebase-assets.mjs && node scripts/postbuild.mjs",

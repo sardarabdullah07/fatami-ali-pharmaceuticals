@@ -32,7 +32,7 @@ const statements = [
   {
     quote:
       'We view ourselves as custodians of our partners’ reputations. Every product we distribute, every hospital we serve and every physician we engage reflects that.',
-    source: 'Why Fatami Ali Pharmaceuticals',
+    source: 'Why Fatima Ali Pharmaceuticals',
   },
 ]
 

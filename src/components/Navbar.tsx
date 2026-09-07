@@ -91,7 +91,7 @@ export function Navbar() {
             scrolled ? 'h-[66px]' : 'h-[var(--nav-h)]',
           )}
         >
-          <Link to="/" className="shrink-0 rounded-md" aria-label="Fatami Ali Pharmaceuticals — home">
+          <Link to="/" className="shrink-0 rounded-md" aria-label="Fatima Ali Pharmaceuticals — home">
             <Logo />
           </Link>
 

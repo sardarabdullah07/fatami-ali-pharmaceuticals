@@ -102,7 +102,7 @@ if (/<script[^>]+src=/.test(html) || /<link[^>]+rel="stylesheet"[^>]+href="\//.t
   throw new Error('standalone: an external script or stylesheet survived inlining')
 }
 
-writeFileSync(resolve(out, 'fatami-ali-pharmaceuticals.html'), html)
+writeFileSync(resolve(out, 'fatima-ali-pharmaceuticals.html'), html)
 
 /* --------------------------------------------------------------- artifact
  *
@@ -139,7 +139,7 @@ const boot = `
   } catch (e) {}
 })()`
 
-const fragment = `<title>Fatami Ali Pharmaceuticals</title>
+const fragment = `<title>Fatima Ali Pharmaceuticals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -160,5 +160,5 @@ writeFileSync(resolve(out, 'artifact.html'), fragment)
 
 const mb = (n) => `${(n / 1024 / 1024).toFixed(2)} MB`
 console.log(`standalone: ${jsCount} of ${assets.size} assets inlined, no external references left`)
-console.log(`standalone: fatami-ali-pharmaceuticals.html — ${mb(Buffer.byteLength(html))}`)
+console.log(`standalone: fatima-ali-pharmaceuticals.html — ${mb(Buffer.byteLength(html))}`)
 console.log(`standalone: artifact.html (body fragment) — ${mb(Buffer.byteLength(fragment))}`)
