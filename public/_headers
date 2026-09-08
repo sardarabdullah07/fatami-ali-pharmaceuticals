@@ -1,0 +1,17 @@
+# Cloudflare Pages response headers.
+#
+# The site is static and loads only itself, Google Fonts and the Web3Forms
+# relay, so these can be strict without breaking anything.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+# Vite's hashed bundles and the photographs share this folder. The bundles
+# could be cached forever, but the photographs keep their names when they are
+# replaced — so a week, not a year, or a swapped image would stay stale for
+# returning visitors. Cloudflare's edge cache does the heavy lifting anyway.
+/assets/*
+  Cache-Control: public, max-age=604800
