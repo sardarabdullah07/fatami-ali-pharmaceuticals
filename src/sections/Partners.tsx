@@ -1,5 +1,5 @@
 import { Section, SectionHead } from '@/components/ui'
-import { StaggerGroup, StaggerItem } from '@/components/motion'
+import { ImageReveal, Reveal, StaggerGroup, StaggerItem } from '@/components/motion'
 import { partners } from '@/data/company'
 
 /**
@@ -8,6 +8,12 @@ import { partners } from '@/data/company'
  * redrawn approximation of another company's mark would be a fabrication.
  * The cards are typographic instead: the name set large, the country and the
  * scope of the agreement stated plainly.
+ *
+ * Below the cards sits the company's own reach map — Kabul drawn out to five
+ * cities. Only two of them, Dhaka and New Delhi, are where the four exclusive
+ * partners manufacture; the other three are the Europe and Middle East the
+ * profile says it is exploring. The caption keeps that distinction, so the
+ * figure never reads as five partnerships.
  */
 export function Partners() {
   return (
@@ -63,10 +69,34 @@ export function Partners() {
           ))}
         </StaggerGroup>
 
-        <p className="mt-8 max-w-prose text-[0.8125rem] leading-relaxed text-fg-subtle">
-          We continue to explore collaborations with pharmaceutical innovators from Europe, the
-          Middle East, South Asia, East Asia and North America to further strengthen the portfolio.
-        </p>
+        <figure className="mt-16">
+          <ImageReveal className="overflow-hidden rounded-plate border border-line shadow-lift">
+            <img
+              src="/assets/editorial/kabul-connections.webp"
+              srcSet="/assets/editorial/kabul-connections-800.webp 800w, /assets/editorial/kabul-connections.webp 1408w"
+              sizes="(min-width: 1400px) 1352px, 92vw"
+              alt="Map with Kabul at the centre and routes drawn to Dhaka in Bangladesh, New Delhi in India, Istanbul in Turkey, Damascus in Syria and Cairo in Egypt"
+              width={1408}
+              height={768}
+              loading="lazy"
+              decoding="async"
+              /* On a phone the full 1.83:1 chart is 180px tall and every city
+                 label is illegible. Cropping to 4:3, weighted right, keeps
+                 Kabul, New Delhi and Dhaka — the three cities the partner
+                 agreements actually run through — at a readable size, and
+                 gives up Istanbul and Cairo, which the caption still names. */
+              className="photo-dim aspect-[4/3] w-full object-cover object-[84%_50%] sm:aspect-[1408/768] sm:object-center"
+            />
+          </ImageReveal>
+          <Reveal as="figcaption" className="mt-6 grid gap-3 sm:grid-cols-[auto_1fr] sm:gap-6">
+            <span className="rule-accent mt-2.5 sm:w-10" aria-hidden="true" />
+            <p className="max-w-prose text-body-sm leading-relaxed text-fg-muted">
+              Our four exclusive partners manufacture in Bangladesh and India. We continue to
+              explore collaborations with pharmaceutical innovators from Europe, the Middle East,
+              South Asia, East Asia and North America to further strengthen the portfolio.
+            </p>
+          </Reveal>
+        </figure>
       </div>
     </Section>
   )
