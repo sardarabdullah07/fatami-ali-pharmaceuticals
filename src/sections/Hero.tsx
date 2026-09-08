@@ -1,6 +1,5 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, MapPin } from 'lucide-react'
 import { company, partners } from '@/data/company'
 import { usePrefersReducedMotion } from '@/hooks/useReducedMotion'
@@ -9,19 +8,18 @@ import { usePrefersReducedMotion } from '@/hooks/useReducedMotion'
  * The hero is a deep navy-teal panel in both themes — the brand's own dark
  * register, lit from the top right by the logo's turquoise.
  *
- * What it opens on is the thing that is actually distinctive about this
- * company: its own office in Khair Khana, with the caduceus mark on the wall.
- * Stock photography of gloved hands would say nothing.
+ * The plate is a map of Afghanistan with Kabul marked: the company's whole
+ * proposition is that it is the in-country partner, and the figure card beside
+ * it — ten years, Khair Khana — reads as a pin on that map. The map is a
+ * labelled chart rather than a photograph, so it is shown whole in landscape
+ * and the partner card only overlays it once the plate is wide enough to
+ * spare the room.
  *
  * The plate carries one glass card — the four exclusive distribution
  * agreements — because that is the single fact a manufacturer is scanning for.
  */
 export function Hero() {
   const reduced = usePrefersReducedMotion()
-  const ref = useRef<HTMLElement>(null)
-
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const plateY = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
 
   const rise = (delay: number) =>
     reduced
@@ -34,7 +32,6 @@ export function Hero() {
 
   return (
     <section
-      ref={ref}
       className="on-dark relative overflow-hidden bg-ink-950 pt-[var(--nav-h)]"
       aria-labelledby="hero-title"
     >
@@ -128,52 +125,12 @@ export function Hero() {
           transition={{ duration: reduced ? 0 : 0.9, delay: 0.14, ease: [0.22, 0.61, 0.36, 1] }}
           className="relative"
         >
-          {/* Portrait on a phone, landscape on a tablet, portrait again beside
-              the copy on a desktop. The phone case has to be portrait: below
-              `sm` the partner list falls to a single column, and a 5:4 plate is
-              then too short to hold it clear of the figure card above. */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-plate border border-white/10 bg-ink-900 shadow-lift sm:aspect-[5/4] lg:aspect-[4/5]">
-            <motion.img
-              src="/assets/gallery/office-signage.webp"
-              srcSet="/assets/gallery/office-signage-800.webp 800w, /assets/gallery/office-signage.webp 1280w"
-              sizes="(min-width: 1024px) 46vw, 92vw"
-              alt="The Fatima Ali Trading Company caduceus mark and wordmark illuminated on the panelled wall of the company office in Khair Khana, Kabul, beside product display shelving"
-              width={1280}
-              height={960}
-              decoding="async"
-              style={reduced ? undefined : { y: plateY }}
-              className="absolute inset-0 h-[110%] w-full object-cover"
-            />
-            {/* A deep scrim at the foot so the glass card always has contrast
-                under it, whatever the photograph is doing there. */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950/90 via-ink-950/45 to-transparent"
-            />
-
-            <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-              <div className="glass-dark rounded-panel p-5 sm:p-6">
-                <p className="text-label uppercase text-teal-300">Exclusive Afghan distributor</p>
-                <ul className="mt-4 grid grid-cols-1 gap-x-5 gap-y-2 sm:grid-cols-2">
-                  {partners.map((partner) => (
-                    <li
-                      key={partner.name}
-                      className="flex items-start gap-2 text-[0.8125rem] leading-snug text-white"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-[0.4rem] h-1 w-1 shrink-0 rounded-full bg-teal-300"
-                      />
-                      {partner.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* One figure, lifted out of the plate onto the panel. */}
-          <div className="glass-dark absolute -left-3 -top-5 rounded-panel p-5 sm:-left-6 sm:p-6">
+          {/* One figure, lifted out of the plate onto the panel — the pin on
+              the map. From `sm` up it overlaps the plate's top-left corner,
+              where the chart has only a neighbour's name to lose. On a phone
+              the plate is barely 240px tall and the card would sit over Kabul,
+              so it stacks above the map instead. */}
+          <div className="glass-dark mb-4 rounded-panel p-5 sm:absolute sm:-left-6 sm:-top-5 sm:z-10 sm:mb-0 sm:p-6">
             <p className="nums font-display text-[2.25rem] font-bold leading-none text-teal-300">
               10+
             </p>
@@ -184,6 +141,59 @@ export function Hero() {
               <MapPin className="h-3 w-3" aria-hidden="true" />
               Khair Khana, Kabul
             </p>
+          </div>
+
+          {/* The frame takes the chart's own ratio, and the chart sits still
+              in it. The photograph this replaced drifted on scroll behind an
+              oversized crop; a labelled map cannot afford either — the
+              overscan clipped Iran and India to fragments, and a legend that
+              moves under a pinned card reads as a mistake. */}
+          <div className="relative aspect-[736/533] overflow-hidden rounded-plate border border-white/10 bg-ink-900 shadow-lift">
+            <img
+              src="/assets/editorial/afghanistan-map.webp"
+              alt="Political map of Afghanistan with Kabul marked, showing the neighbouring countries of Iran, Turkmenistan, Uzbekistan, Tajikistan, China and Pakistan"
+              width={736}
+              height={533}
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            {/* The chart is printed on warm off-white, which on this ground
+                would read as a lit rectangle. A light teal multiply pulls the
+                paper and the pale yellow of the country toward the palette
+                without touching the black labels. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-teal-800/30 mix-blend-multiply"
+            />
+            {/* A scrim at the foot for the glass card — only where the card
+                actually sits over the plate. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 hidden h-1/2 bg-gradient-to-t from-ink-950/90 via-ink-950/45 to-transparent sm:block"
+            />
+          </div>
+
+          {/* Overlaid on the plate from `sm` up. On a phone the plate is
+              barely 250px tall, and a card covering two thirds of a map would
+              defeat the point of showing one — so it sits underneath instead. */}
+          <div className="mt-4 sm:absolute sm:inset-x-6 sm:bottom-6 sm:mt-0">
+            <div className="glass-dark rounded-panel p-5 sm:p-6">
+              <p className="text-label uppercase text-teal-300">Exclusive Afghan distributor</p>
+              <ul className="mt-4 grid grid-cols-1 gap-x-5 gap-y-2 sm:grid-cols-2">
+                {partners.map((partner) => (
+                  <li
+                    key={partner.name}
+                    className="flex items-start gap-2 text-[0.8125rem] leading-snug text-white"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.4rem] h-1 w-1 shrink-0 rounded-full bg-teal-300"
+                    />
+                    {partner.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.div>
       </div>
