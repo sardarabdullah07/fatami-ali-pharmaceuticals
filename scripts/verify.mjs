@@ -446,25 +446,80 @@ console.log('\n=== INTERACTIONS ===\n')
     'email format is validated live after a failed submit',
   )
 
-  await page.fill('#field-name', 'A. Rahimi')
-  await page.fill('#field-organization', 'Beximco Pharmaceuticals Ltd.')
-  await page.fill('#field-email', 'a.rahimi@example.com')
-  await page.selectOption('#field-inquiryType', 'Pharmaceutical Partnership')
-  await page.fill('#field-subject', 'Exclusive distribution enquiry')
-  await page.fill('#field-message', 'We would like to discuss exclusive distribution for Afghanistan.')
-  await page.click('button[type="submit"]')
-  await page.waitForTimeout(600)
+  // The relay is mocked for the rest of this block. A real POST from a test
+  // run would land a message in the company inbox every time the suite ran.
+  const RELAY = 'https://api.web3forms.com/**'
+  let captured = null
+  let relayCalls = 0
+  await page.route(RELAY, (route) => {
+    relayCalls += 1
+    captured = route.request().postDataJSON()
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ success: true, message: 'mocked' }),
+    })
+  })
 
-  const success = await page.textContent('[role="status"]')
-  expect(success.includes('ready to send'), 'valid submit reaches the success state')
+  const fillValid = async () => {
+    await page.fill('#field-name', 'A. Rahimi')
+    await page.fill('#field-organization', 'Beximco Pharmaceuticals Ltd.')
+    await page.fill('#field-email', 'a.rahimi@example.com')
+    await page.selectOption('#field-inquiryType', 'Pharmaceutical Partnership')
+    await page.fill('#field-subject', 'Exclusive distribution enquiry')
+    await page.fill(
+      '#field-message',
+      'We would like to discuss exclusive distribution for Afghanistan.',
+    )
+  }
+
+  await fillValid()
+  await page.click('button[type="submit"]')
+  await page.waitForSelector('[role="status"]', { timeout: 5000 })
+
+  const sent = await page.textContent('[role="status"]')
+  expect(relayCalls === 1, 'valid submit posts to the relay exactly once', `calls=${relayCalls}`)
+  expect(sent.includes('has been sent'), 'relay success reaches the sent state')
+  expect(sent.includes('a.rahimi@example.com'), 'sent state echoes the reply-to address')
   expect(
-    success.includes('Nothing has left your browser yet'),
-    'success state does not claim the mail was sent',
+    captured?.access_key === 'c860e8d6-0e03-429e-affd-ec222a1b6a45' &&
+      captured?.email === 'a.rahimi@example.com' &&
+      captured?.subject?.includes('Exclusive distribution enquiry') &&
+      captured?.inquiry_type === 'Pharmaceutical Partnership',
+    'relay payload carries the key, reply-to, subject and inquiry type',
+    JSON.stringify(captured)?.slice(0, 200),
   )
+  expect(
+    !(await page.isVisible('a:text-is("Open in your email app")')),
+    'sent state offers no mail-app link',
+  )
+
+  // Relay down: the visitor must get the mail-app path, never a false "sent".
+  await page.unroute(RELAY)
+  await page.route(RELAY, (route) => {
+    relayCalls += 1
+    return route.fulfill({ status: 500, contentType: 'text/plain', body: 'down' })
+  })
+  await page.click('button:text-is("Write another")')
+  await page.waitForSelector('#field-name')
+  await fillValid()
+  await page.click('button[type="submit"]')
+  await page.waitForSelector('[role="status"]', { timeout: 5000 })
+
+  const fallback = await page.textContent('[role="status"]')
+  expect(fallback.includes('could not reach'), 'relay failure reaches the fallback state')
+  expect(!fallback.includes('has been sent'), 'fallback never claims the mail was sent')
   const mailto = await page.getAttribute('a:text-is("Open in your email app")', 'href')
   expect(
     mailto?.startsWith('mailto:Fatima.ali011@outlook.com') && mailto.includes('Zaland1114'),
-    'mailto is addressed to both company inboxes',
+    'fallback mailto is addressed to both company inboxes',
+  )
+
+  await page.click('button:text-is("Try again")')
+  await page.waitForSelector('#field-name')
+  expect(
+    (await page.inputValue('#field-name')) === 'A. Rahimi',
+    'try again returns to the form with the values intact',
   )
 
   await context.close()

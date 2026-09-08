@@ -30,6 +30,13 @@ export const contact = {
   address:
     'Khair Khana, Parwan Hotel, Rahman Center, Third Floor, Office No# F2/08, Kabul, Afghanistan',
   city: 'Kabul, Afghanistan',
+  /**
+   * Web3Forms access key for the contact form. Public by design — it can only
+   * deliver to the inbox it was issued for, so committing it exposes nothing.
+   * Kept here rather than in an env file so every build target (Pages, the
+   * standalone file, a local build) sends mail without extra configuration.
+   */
+  formAccessKey: 'c860e8d6-0e03-429e-affd-ec222a1b6a45',
 } as const
 
 /* ------------------------------------------------------------------ *
