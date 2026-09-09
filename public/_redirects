@@ -3,7 +3,7 @@
 # One canonical host. www is a common habit to type, so it must resolve — but
 # serving the same site on two hosts splits search ranking between them, so
 # it redirects rather than mirrors.
-https://www.fatimaalipharma.com/*    https://fatimaalipharma.com/:splat    301
+https://www.fatimaalico.com/*    https://fatimaalico.com/:splat    301
 
 # Client-side routing: every unmatched path serves the shell at 200, or
 # /about and /contact 404 on refresh and on every link a client is sent.

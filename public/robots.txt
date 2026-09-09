@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fatimaalipharma.com/sitemap.xml
+Sitemap: https://fatimaalico.com/sitemap.xml
